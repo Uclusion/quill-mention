@@ -7,11 +7,6 @@
   "repository": "https://github.com/Uclusion/quill-mention.git",
   "author": "Fredrik Sundqvist <fsundqvist@gmail.com>",
   "license": "MIT",
-  "files": [
-    "dist",
-    "LICENSE",
-    "README.md"
-  ],
   "dependencies": {
     "quill": "^2.0.0-dev.4"
   },
