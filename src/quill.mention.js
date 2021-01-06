@@ -638,9 +638,12 @@ class Mention {
 
   onSomethingChange() {
     const range = this.quill.getSelection();
-    if (range == null) return;
+    if (range == null) {
+      this.cursorPos = this.quill.length();
+    } else {
+      this.cursorPos = range.index;
+    }
 
-    this.cursorPos = range.index;
     const textBeforeCursor = this.getTextBeforeCursor();
     const { mentionChar, mentionCharIndex } = getMentionCharIndex(
       textBeforeCursor,
