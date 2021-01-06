@@ -639,19 +639,18 @@ class Mention {
   onSomethingChange() {
     const range = this.quill.getSelection();
     if (range == null) {
-      console.error('empty range');
       // getLength is always at least one, because of the \n,
       // so we're fine with out look back logic below
       this.cursorPos = this.quill.getLength();
     } else {
       this.cursorPos = range.index;
     }
-    // if we're at position 0, then try position 1, since if we just typed a character (and are at 1)
+    // if we're at position 0, set it to 1, since nothing can be before 0 anyways and
+    // the first char appears to still have 0 at the selection
     if (this.cursorPos === 0) {
       this.cursorPos = 1;
     }
     const textBeforeCursor = this.getTextBeforeCursor();
-    console.error(textBeforeCursor);
     const { mentionChar, mentionCharIndex } = getMentionCharIndex(
       textBeforeCursor,
       this.options.mentionDenotationChars
