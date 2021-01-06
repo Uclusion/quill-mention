@@ -643,8 +643,9 @@ class Mention {
     } else {
       this.cursorPos = range.index;
     }
-
+    console.error(this.cursorPos);
     const textBeforeCursor = this.getTextBeforeCursor();
+    console.error(textBeforeCursor);
     const { mentionChar, mentionCharIndex } = getMentionCharIndex(
       textBeforeCursor,
       this.options.mentionDenotationChars
