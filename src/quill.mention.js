@@ -639,7 +639,10 @@ class Mention {
   onSomethingChange() {
     const range = this.quill.getSelection();
     if (range == null) {
-      this.cursorPos = this.quill.length();
+      console.error('empty range');
+      // getLength is always at least one, because of the \n,
+      // so we're fine with out look back logic below
+      this.cursorPos = this.quill.getLength();
     } else {
       this.cursorPos = range.index;
     }
