@@ -646,7 +646,10 @@ class Mention {
     } else {
       this.cursorPos = range.index;
     }
-    console.error(this.cursorPos);
+    // if we're at position 0, then try position 1, since if we just typed a character (and are at 1)
+    if (this.cursorPos === 0) {
+      this.cursorPos = 1;
+    }
     const textBeforeCursor = this.getTextBeforeCursor();
     console.error(textBeforeCursor);
     const { mentionChar, mentionCharIndex } = getMentionCharIndex(
